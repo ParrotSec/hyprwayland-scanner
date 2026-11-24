@@ -1,0 +1,64 @@
+.TH HYPRWAYLAND-SCANNER 1 "hyprwayland-scanner" "User Commands"
+.SH NAME
+hyprwayland-scanner - generate C++ Wayland protocol bindings
+.SH SYNOPSIS
+.B hyprwayland-scanner
+.RI [ OPTIONS ] " PROTOCOL_XML OUTPUT_DIRECTORY"
+.SH DESCRIPTION
+.B hyprwayland-scanner
+generates C++ bindings for Wayland protocols, for either servers or clients.
+
+By default, hyprwayland-scanner generates server-side code. Generated files are
+written to the specified output directory.
+
+A compiler with C++23 support as well as
+.B pugixml
+are required.
+
+.SH ARGUMENTS
+.TP
+.I PROTOCOL_XML
+Path to the Wayland protocol XML file.
+.TP
+.I OUTPUT_DIRECTORY
+Path to the directory where generated files will be written.
+.SH OPTIONS
+.TP
+.BR -c ", " --client
+Generate client-side code instead of server-side code.
+.TP
+.B --wayland-enums
+Use Wayland-style enum naming.
+.TP
+.B --no-interfaces
+Do not generate
+.B wl_interface
+and related interface metadata.
+.TP
+.BR -v ", " --version
+Print the program version and exit.
+.SH OUTPUT
+The program writes generated C++ source files to
+.IR OUTPUT_DIRECTORY .
+Typically this includes a header file and a source file derived from the input XML filename.
+
+.SH EXAMPLES
+Generate server-side bindings:
+.PP
+.nf
+hyprwayland-scanner /path/to/protocol.xml ./generated
+.fi
+.PP
+Generate client-side bindings:
+.PP
+.nf
+hyprwayland-scanner --client /path/to/protocol.xml ./generated
+.fi
+.PP
+Generate client-side bindings with Wayland enum naming:
+.PP
+.nf
+hyprwayland-scanner --client --wayland-enums /path/to/protocol.xml ./generated
+.fi
+.SH AUTHOR
+This manual page is maintained for Debian by the Debian Hyprland maintainers, based on the upstream code and README.

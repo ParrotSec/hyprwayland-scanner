@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<protocol name="test_proto">
+  <copyright>
+    Test protocol for hyprwayland-scanner.
+  </copyright>
+
+  <interface name="test_global" version="1">
+    <enum name="mode">
+      <entry name="off" value="0"/>
+      <entry name="on" value="1"/>
+    </enum>
+
+    <request name="destroy" type="destructor"/>
+
+    <request name="set_mode">
+      <arg name="mode" type="uint" enum="mode"/>
+    </request>
+
+    <request name="bind_child">
+      <arg name="id" type="new_id" interface="test_child"/>
+    </request>
+
+    <event name="configured">
+      <arg name="width" type="int"/>
+      <arg name="height" type="int"/>
+    </event>
+  </interface>
+
+  <interface name="test_child" version="1">
+    <request name="destroy" type="destructor"/>
+    <event name="done"/>
+  </interface>
+</protocol>

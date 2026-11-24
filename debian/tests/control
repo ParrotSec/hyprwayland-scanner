@@ -1,0 +1,9 @@
+Tests:
+ gen-tests,
+Depends:
+ g++,
+ libwayland-dev,
+ pkgconf,
+ @,
+Restrictions:
+ allow-stderr,

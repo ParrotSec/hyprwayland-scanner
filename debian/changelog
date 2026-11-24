@@ -1,0 +1,70 @@
+hyprwayland-scanner (0.4.6-1parrot1) echo; urgency=medium
+
+  * Import new debian backports release. 
+
+ -- Lorenzo "Palinuro" Faletra <palinuro@parrotsec.org>  Tue, 24 Nov 2026 15:18:14 +0100
+
+hyprwayland-scanner (0.4.6-1~bpo13+1) trixie-backports; urgency=medium
+
+  * Rebuild for trixie-backports.
+
+ -- Alex Myczko <tar@debian.org>  Fri, 29 May 2026 18:14:40 +0000
+
+hyprwayland-scanner (0.4.6-1) unstable; urgency=medium
+
+  * New upstream version 0.4.6
+  * d/control: append Uploaders
+
+ -- Carl Keinath <carl.keinath@gmail.com>  Mon, 27 Apr 2026 08:39:23 +0200
+
+hyprwayland-scanner (0.4.5-1) unstable; urgency=medium
+
+  * d/control:
+    - bump S-V to 4.7.4, remove RRR and Priority: optional
+    - salvage and move to team maintenance (Closes: #1130341)
+  * d/watch: migrate to version 5
+  * add CI/CD config
+  * add manpage for hyprwayland-scanner
+  * enable autopkg-tests
+
+ -- Carl Keinath <carl.keinath@gmail.com>  Sat, 04 Apr 2026 00:34:34 +0800
+
+hyprwayland-scanner (0.4.5-0.1) unstable; urgency=medium
+
+  * Non-maintainer upload
+  [ alan (NyxTrail) ]
+  * Include metadata for patch file
+
+  [ Chow Loong Jin ]
+  * New upstream version 0.4.5 (Closes: #1106524)
+  * Drop upstreamed patches
+
+ -- Chow Loong Jin <hyperair@debian.org>  Thu, 18 Sep 2025 16:24:08 +0800
+
+hyprwayland-scanner (0.4.4-1) unstable; urgency=medium
+
+  [ alan (NyxTrail) ]
+  * New upstream version 0.4.4
+  * Update d/copyright year
+  * Add ARCH_INDEPENDENT cmake flag
+
+ -- Alan M Varghese (NyxTrail) <alan@digistorm.in>  Sun, 04 May 2025 15:56:52 +0000
+
+hyprwayland-scanner (0.4.2-2) unstable; urgency=medium
+
+  * #1085254 : Mark 'Multi-Arch: foreign', and move pkgconf
+    and cmake files to /usr/share
+
+ -- Alan M Varghese (NyxTrail) <alan@digistorm.in>  Sat, 19 Oct 2024 13:39:08 +0000
+
+hyprwayland-scanner (0.4.2-1) unstable; urgency=medium
+
+  * New upstream version 0.4.2
+
+ -- Alan M Varghese (NyxTrail) <alan@digistorm.in>  Sun, 22 Sep 2024 09:08:26 +0000
+
+hyprwayland-scanner (0.3.10-1) unstable; urgency=medium
+
+  * Initial release. (Closes: #1073195)
+
+ -- Alan M Varghese (NyxTrail) <alan@digistorm.in>  Fri, 14 Jun 2024 10:21:06 +0000

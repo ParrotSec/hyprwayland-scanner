@@ -1,0 +1,39 @@
+#!/bin/sh
+
+set -eu
+
+mkdir -p "$AUTOPKGTEST_TMP"
+cp debian/tests/test-protocol.xml "$AUTOPKGTEST_TMP"/test-protocol.xml
+
+cd "$AUTOPKGTEST_TMP"
+mkdir -p "server" "client" "enums" "noif"
+
+hyprwayland-scanner "test-protocol.xml" "server"
+hyprwayland-scanner --client "test-protocol.xml" "client"
+hyprwayland-scanner --wayland-enums "test-protocol.xml" "enums"
+hyprwayland-scanner --no-interfaces "test-protocol.xml" "noif"
+
+test -f "server/test-protocol.hpp"
+test -f "server/test-protocol.cpp"
+test -f "client/test-protocol.hpp"
+test -f "client/test-protocol.cpp"
+test -f "enums/test-protocol.hpp"
+test -f "enums/test-protocol.cpp"
+test -f "noif/test-protocol.hpp"
+test -f "noif/test-protocol.cpp"
+
+grep -q 'wayland-server.h' "server/test-protocol.hpp"
+grep -q 'wayland-client.h' "client/test-protocol.hpp"
+grep -q 'const wl_interface test_global_interface' "server/test-protocol.cpp"
+
+if grep -q '^const wl_interface test_global_interface = {' "noif/test-protocol.cpp"; then echo "unexpected wl_interface definition with --no-interfaces"
+    exit 1
+fi
+
+if grep -q '^static const wl_message ' "noif/test-protocol.cpp"; then
+    echo "unexpected wl_message generation with --no-interfaces"
+    exit 1
+fi
+
+c++ -std=c++23 -c "server/test-protocol.cpp" $(pkg-config --cflags wayland-server)
+c++ -std=c++23 -c "client/test-protocol.cpp" $(pkg-config --cflags wayland-client)
